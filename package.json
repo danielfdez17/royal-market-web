@@ -225,9 +225,9 @@
     "sqlstring": "^2.3.1",
     "stack-utils": "^2.0.6",
     "statuses": "^2.0.1",
+    "string_decoder": "^1.1.1",
     "string-length": "^4.0.2",
     "string-width": "^4.2.3",
-    "string_decoder": "^1.1.1",
     "strip-ansi": "^6.0.1",
     "strip-bom": "^4.0.0",
     "strip-final-newline": "^2.0.0",
@@ -263,7 +263,8 @@
   "devDependencies": {
     "express": "4.19.2",
     "jest": "29.7.0",
-    "mysql": "2.18.1"
+    "mysql": "2.18.1",
+    "standard": "17.1.0"
   },
   "scripts": {
     "test": "npm run test"
@@ -284,5 +285,8 @@
   "bugs": {
     "url": "https://github.com/danielfdez17/royal-market-web/issues"
   },
-  "homepage": "https://github.com/danielfdez17/royal-market-web#readme"
+  "homepage": "https://github.com/danielfdez17/royal-market-web#readme",
+  "eslintConfig": {
+    "extends": "standard"
+  }
 }
