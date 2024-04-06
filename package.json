@@ -47,6 +47,7 @@
     "convert-source-map": "^2.0.0",
     "cookie": "^0.6.0",
     "cookie-parser": "1.4.6",
+    "cookie-parser": "1.4.6",
     "cookie-signature": "^1.0.6",
     "core-util-is": "^1.0.3",
     "create-jest": "^29.7.0",
@@ -59,6 +60,7 @@
     "destroy": "^1.2.0",
     "detect-newline": "^3.1.0",
     "diff-sequences": "^29.6.3",
+    "dotenv": "8.2.0",
     "dotenv": "8.2.0",
     "ee-first": "^1.1.1",
     "electron-to-chromium": "^1.4.728",
@@ -76,6 +78,8 @@
     "execa": "^5.1.1",
     "exit": "^0.1.2",
     "expect": "^29.7.0",
+    "express": "4.19.2",
+    "express-async-errors": "^3.1.1",
     "express": "4.19.2",
     "express-async-errors": "^3.1.1",
     "fast-json-stable-stringify": "^2.1.0",
@@ -123,6 +127,7 @@
     "istanbul-lib-report": "^3.0.1",
     "istanbul-lib-source-maps": "^4.0.1",
     "istanbul-reports": "^3.1.7",
+    "jest": "29.7.0",
     "jest": "29.7.0",
     "jest-changed-files": "^29.7.0",
     "jest-circus": "^29.7.0",
@@ -172,7 +177,9 @@
     "mimic-fn": "^2.1.0",
     "minimatch": "^3.1.2",
     "morgan": "1.10.0",
+    "morgan": "1.10.0",
     "ms": "^2.0.0",
+    "mysql": "2.18.1",
     "mysql": "2.18.1",
     "natural-compare": "^1.4.0",
     "negotiator": "^0.6.3",
@@ -270,11 +277,12 @@
   },
   "devDependencies": {
     "nodemon": "2.0.7",
+    "nodemon": "2.0.7",
     "standard": "17.1.0"
   },
   "scripts": {
     "start": "nodemon app.js",
-    "test": "jest"
+    "test": "npm run test"
   },
   "repository": {
     "type": "git",
