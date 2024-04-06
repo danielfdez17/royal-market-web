@@ -1,7 +1,8 @@
-import { createPool } from 'mysql'
+// import { createPool } from 'mysql'
 require('dotenv').config()
+const mysql = require('mysql')
 
-const pool = createPool({
+const pool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -9,4 +10,4 @@ const pool = createPool({
   port: process.env.DB_PORT
 })
 
-export default pool
+module.exports = pool
