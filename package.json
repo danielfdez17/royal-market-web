@@ -282,7 +282,7 @@
   },
   "scripts": {
     "start": "nodemon app.js",
-    "test": "npm run test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
