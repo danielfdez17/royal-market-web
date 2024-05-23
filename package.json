@@ -273,7 +273,7 @@
   },
   "scripts": {
     "start": "nodemon app.js",
-    "test": "npm run test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -291,8 +291,5 @@
   "bugs": {
     "url": "https://github.com/danielfdez17/royal-market-web/issues"
   },
-  "homepage": "https://github.com/danielfdez17/royal-market-web#readme",
-  "eslintConfig": {
-    "extends": "standard"
-  }
+  "homepage": "https://github.com/danielfdez17/royal-market-web#readme"
 }
