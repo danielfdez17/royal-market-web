@@ -1,23 +1,23 @@
-const z = require('zod')
+import { objectUtil, string, number } from "zod";
 
-const productSchema = z.objectUtil({
-  name: z.string({
-    invalid_type_error: 'Product name must be a string',
-    required_error: 'Product name is required'
+const productSchema = objectUtil({
+  name: string({
+    invalid_type_error: "Product name must be a string",
+    required_error: "Product name is required",
   }),
-  stock: z.number().int().positive().default(0),
-  price: z.number().positive().required()
-})
+  stock: number().int().positive().default(0),
+  price: number().positive().required(),
+});
 
-function validateProduct (product) {
-  return productSchema.parse(product)
+function validateProduct(product) {
+  return productSchema.parse(product);
 }
 
-function validatePartialProduct (product) {
-  return productSchema.partial().safeParse(product)
+function validatePartialProduct(product) {
+  return productSchema.partial().safeParse(product);
 }
 
-module.exports = {
+export default {
   validateProduct,
-  validatePartialProduct
-}
+  validatePartialProduct,
+};
