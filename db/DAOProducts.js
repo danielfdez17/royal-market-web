@@ -1,78 +1,102 @@
 export class DAOProducts {
-  pool
+  pool;
 
-  constructor (pool) {
-    this.pool = pool
+  constructor(pool) {
+    this.pool = pool;
   }
 
-  create ({ input }, callback) {
+  create(product, callback) {
     this.pool.getConnection((err, connection) => {
-      if (err) { callback(err) } else {
+      if (err) {
+        callback(err);
+      } else {
         connection.query(
-          'INSERT INTO products (name, stock, price) VALUES (?, ?, ?)',
-          [input.name, input.stock, input.price],
+          "INSERT INTO products (name, stock, price) VALUES (?, ?, ?)",
+          [product.name, product.stock, product.price],
           (err, rows) => {
-            if (err) { callback(err) } else callback(null, rows[0])
-            connection.release()
+            if (err) {
+              callback(err);
+            } else callback(null, rows[0]);
+            connection.release();
           }
-        )
+        );
       }
-    })
+    });
   }
 
-  getById ({ id }, callback) {
+  getById(id, callback) {
     this.pool.getConnection((err, connection) => {
-      if (err) { callback(err) } else {
+      if (err) {
+        callback(err);
+      } else {
         connection.query(
-          'SELECT * FROM products WHERE id = ?',
+          "SELECT * FROM products WHERE id = ?",
           [id],
           (err, rows) => {
-            if (err) { callback(err) } else { callback(null, rows[0]) }
-            connection.release()
+            if (err) {
+              callback(err);
+            } else {
+              callback(null, rows[0]);
+            }
+            connection.release();
           }
-        )
+        );
       }
-    })
+    });
   }
 
-  getAll (callback) {
+  getAll(callback) {
     this.pool.getConnection((err, connection) => {
-      if (err) { callback(err) } else {
-        connection.query('SELECT * FROM products', (err, rows) => {
-          if (err) { callback(err) } else { callback(null, rows) }
-          connection.release()
-        })
+      if (err) {
+        callback(err);
+      } else {
+        connection.query("SELECT * FROM products", (err, rows) => {
+          if (err) {
+            callback(err);
+          } else {
+            callback(null, rows);
+          }
+          connection.release();
+        });
       }
-    })
+    });
   }
 
-  update ({ id, input }, callback) {
+  update(product, callback) {
     this.pool.getConnection((err, connection) => {
-      if (err) { callback(err) } else {
+      if (err) {
+        callback(err);
+      } else {
         connection.query(
-          'UPDATE products SET name = ?, stock = ?, price = ? WHERE id = ?',
-          [input.name, input.stock, input.price, id],
+          "UPDATE products SET name = ?, stock = ?, price = ? WHERE id = ?",
+          [product.name, product.stock, product.price, product.id],
           (err, rows) => {
-            if (err) { callback(err) } else callback(null, rows)
-            connection.release()
+            if (err) {
+              callback(err);
+            } else callback(null, rows);
+            connection.release();
           }
-        )
+        );
       }
-    })
+    });
   }
 
-  delete ({ id }, callback) {
+  delete(id, callback) {
     this.pool.getConnection((err, connection) => {
-      if (err) { callback(err) } else {
+      if (err) {
+        callback(err);
+      } else {
         connection.query(
-          'DELETE FROM products WHERE id = ?',
+          "UPDATE products SET activo = 0 WHERE id = ?",
           [id],
           (err, rows) => {
-            if (err) { callback(err) } else callback(null, rows)
-            connection.release()
+            if (err) {
+              callback(err);
+            } else callback(null, rows);
+            connection.release();
           }
-        )
+        );
       }
-    })
+    });
   }
 }
