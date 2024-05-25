@@ -4,6 +4,7 @@
 + [ ] Read all
 + [ ] Read all by sale
 + [ ] Read all by provider
++ [ ] Read all by warehouse
 + [ ] Update
 + [ ] Delete
   
@@ -40,3 +41,22 @@
 + [ ] Provide product
 + [ ] Update provider
 + [ ] Delete provider
+
+<br>
+
+# WAREHOUSES
++ [ ] Create
++ [ ] Read
++ [ ] Read all
++ [ ] Update
++ [ ] Delete
+
+<br>
+
+# WORKERS
++ [ ] Create
++ [ ] Read
++ [ ] Read all
++ [ ] Read all by warehouse
++ [ ] Update
++ [ ] Delete
