@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 3000
 // const warehousesRouter = require('./routes/users.js')
 // const clientsRouter = require('./routes/clients.js')
 // const salesRouter = require('./routes/sales.js')
-// const productsRouter = require('./routes/products.js')
+const productsRouter = require('./routes/products.js')
 // const providersRouter = require('./routes/providers.js')
 // const workersRouter = require('./routes/workers.js')
 
@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 // app.use('/warehouses', warehousesRouter)
 // app.use('/clients', clientsRouter)
 // app.use('/sales', salesRouter)
-// app.use('/products', productsRouter)
+app.use('/products', productsRouter)
 // app.use('/providers', providersRouter)
 // app.use('/workers', workersRouter)
 
