@@ -1,4 +1,3 @@
-// import { createPool } from 'mysql'
 require('dotenv').config()
 const mysql = require('mysql')
 
