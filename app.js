@@ -1,3 +1,4 @@
+"use strict";
 require("dotenv").config();
 const createError = require("http-errors");
 const express = require("express");
@@ -8,7 +9,7 @@ module.exports = {
   pool: database.pool,
 };
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 const indexRouter = require("./routes/indexRouter.js");
 // const warehousesRouter = require('./routes/users.js')
