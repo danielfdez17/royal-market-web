@@ -4,17 +4,30 @@ create database `royal-market-web`;
 
 use `royal-market-web`
 
-create table warehouses(
-  id int not null auto_increment primary key,
-  address varchar(255) not null unique,
-  active boolean default true,
-);
 create table clients(
   id int not null auto_increment primary key,
   identification varchar(255) not null unique,
   name varchar(255) not null,
   balance decimal(10,2) not null,
-  active boolean default true,
+  active boolean default true
+);
+create table products(
+  id int not null auto_increment primary key,
+  name varchar(255) not null unique,
+  stock int not null,
+  price decimal(10,2) not null,
+  active boolean default true
+);
+create table providers(
+  id int not null auto_increment primary key,
+  name varchar(255) not null unique,
+  active boolean default true
+);
+create table providers_products(
+  provider_id int not null,
+  product_id int not null,
+  foreign key (provider_id) references providers(id),
+  foreign key (product_id) references products(id)
 );
 create table sales(
   id int not null auto_increment primary key,
@@ -32,23 +45,10 @@ create table sale_lines(
   foreign key (sale_id) references sales(id),
   foreign key (product_id) references products(id)
 );
-create table products(
+create table warehouses(
   id int not null auto_increment primary key,
-  name varchar(255) not null unique,
-  stock int not null,
-  price decimal(10,2) not null,
-  active boolean default true,
-);
-create table providers(
-  id int not null auto_increment primary key,
-  name varchar(255) not null unique,
-  active boolean default true,
-);
-create table providers_products(
-  provider_id int not null,
-  product_id int not null,
-  foreign key (provider_id) references providers(id),
-  foreign key (product_id) references products(id)
+  address varchar(255) not null unique,
+  active boolean default true
 );
 create table workers(
   id int not null auto_increment primary key,
@@ -74,8 +74,8 @@ insert into providers (name) values ('Provider 2');
 insert into workers (identification, name, salary) values ('123456789', 'John Doe', 1000.00);
 insert into workers (identification, name, salary) values ('1234567890', 'Jane Dao', 2000.00);
 
-insert into sales (client_id) values (1000.00, 1);
-insert into sales (client_id) values (2000.00, 2);
+insert into sales (total_cost, client_id) values (1000.00, 1);
+insert into sales (total_cost, client_id) values (2000.00, 2);
 
 insert into sale_lines (sale_id, product_id, product_quantity, product_price) values (1, 1, 10, 100.00);
 insert into sale_lines (sale_id, product_id, product_quantity, product_price) values (2, 2, 10, 200.00);
