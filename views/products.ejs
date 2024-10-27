@@ -8,6 +8,11 @@
 </head>
 <body>
     <%- include("partials/navbar") %>
-    
+    <ul class="bg-warning">
+        <% if (products && products.length) %>
+            <% products.forEach((product) => {%>
+                <%= product %>
+            <%})%>
+    </ul>
 </body>
 </html>
