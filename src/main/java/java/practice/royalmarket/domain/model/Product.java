@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -30,15 +31,15 @@ public class Product {
 
     private String name;
 
-    private double precio;
-
+    private double price;
+    
     private int stock;
 
     @Column(columnDefinition = "boolean default true")
     private boolean active;
 
-    @ManyToMany(mappedBy = "products", fetch = FetchType.EAGER)
-    private Set<Warehouse> warehouses;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Warehouse warehouses;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
     private Set<SaleProduct> saleProducts;
