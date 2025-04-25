@@ -8,8 +8,9 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,28 +22,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "products")
-public class Product {
+@Table(name = "suppliers")
+public class Supplier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String name;
-
-    private double precio;
-
-    private int stock;
-
     @Column(columnDefinition = "boolean default true")
     private boolean active;
 
-    @ManyToMany(mappedBy = "products", fetch = FetchType.EAGER)
-    private Set<Warehouse> warehouses;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "suppliers_products", joinColumns = @JoinColumn(name = "supplier_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private Set<Product> products;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
-    private Set<SaleProduct> saleProducts;
-
-    @ManyToMany(mappedBy = "products", fetch = FetchType.EAGER)
-    private Set<Supplier> suppliers;
 }

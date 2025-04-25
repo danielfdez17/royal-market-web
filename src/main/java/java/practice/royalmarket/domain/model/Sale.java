@@ -1,5 +1,6 @@
 package java.practice.royalmarket.domain.model;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -8,7 +9,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -21,28 +23,24 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "products")
-public class Product {
+@Table(name = "sales")
+public class Sale {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String name;
+    private double total;
 
-    private double precio;
-
-    private int stock;
+    private LocalDateTime creationDateTime;
 
     @Column(columnDefinition = "boolean default true")
     private boolean active;
 
-    @ManyToMany(mappedBy = "products", fetch = FetchType.EAGER)
-    private Set<Warehouse> warehouses;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "sale")
     private Set<SaleProduct> saleProducts;
-
-    @ManyToMany(mappedBy = "products", fetch = FetchType.EAGER)
-    private Set<Supplier> suppliers;
 }

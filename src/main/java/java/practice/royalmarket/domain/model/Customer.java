@@ -8,7 +8,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -21,28 +20,24 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "products")
-public class Product {
+@Table(name = "customers")
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "phone_number")
+    private int phoneNumber;
+
     private String name;
 
-    private double precio;
-
-    private int stock;
+    private String address;
 
     @Column(columnDefinition = "boolean default true")
     private boolean active;
 
-    @ManyToMany(mappedBy = "products", fetch = FetchType.EAGER)
-    private Set<Warehouse> warehouses;
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    private Set<Sale> sales;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
-    private Set<SaleProduct> saleProducts;
-
-    @ManyToMany(mappedBy = "products", fetch = FetchType.EAGER)
-    private Set<Supplier> suppliers;
 }
