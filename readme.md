@@ -1,1 +1,1 @@
-# Project to learn Node JS web applications
+# Project to practice programming
