@@ -8,4 +8,5 @@ public class ProductDTO {
     private String name;
     private int stock;
     private boolean active;
+    private long warehouseId;
 }
