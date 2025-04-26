@@ -29,6 +29,11 @@ public class Supplier {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    private String name;
+
+    @Column(nullable = false, unique = true)
+    private String mail;
+
     @Column(columnDefinition = "boolean default true")
     private boolean active;
 

@@ -40,4 +40,7 @@ public class SaleProduct {
     @Column(name = "product_price", nullable = false)
     private double productPrice;
 
+    @Column(columnDefinition = "boolean default true")
+    private boolean active;
+
 }
