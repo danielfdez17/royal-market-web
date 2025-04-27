@@ -13,6 +13,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +22,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 @Entity
 @Table(name = "products")
 public class Product {
@@ -40,7 +42,7 @@ public class Product {
     private boolean active;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private Warehouse warehouses;
+    private Warehouse warehouse;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
     private Set<SaleProduct> saleProducts;

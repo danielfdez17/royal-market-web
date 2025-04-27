@@ -13,4 +13,9 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
             """)
     Product findByName(@Param("name") String name);
 
+    @Query("""
+            update Product p set p.active = false where p.id = :id
+            """)
+    void deleteProductById(@Param("id") long id);
+
 }
